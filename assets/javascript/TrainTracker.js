@@ -1,11 +1,11 @@
   //Initialize Firebase
   var config = {
-    apiKey: "AIzaSyAQz6fyaAEzl7H30JF12bk7VQKUHtZV5Ow",
-    authDomain: "employeetracker-7a915.firebaseapp.com",
-    databaseURL: "https://employeetracker-7a915.firebaseio.com",
-    projectId: "employeetracker-7a915",
-    storageBucket: "employeetracker-7a915.appspot.com",
-    messagingSenderId: "992234332893"
+    apiKey: "AIzaSyDhnUigJgCZi4UaXz2dppTe6FAbzmVreGc",
+    authDomain: "train-280f2.firebaseapp.com",
+    databaseURL: "https://train-280f2.firebaseio.com",
+    projectId: "train-280f2",
+    storageBucket: "train-280f2.appspot.com",
+    messagingSenderId: "773012534928"
   };
   firebase.initializeApp(config);
 
@@ -23,10 +23,15 @@
       event.preventDefault();
       
       //Take user input and trim the values
-      trianName = $("#trainName-input").val().trim();
+      trainName = $("#trainName-input").val().trim();
       destination = $("#destination-input").val().trim();
       firstTime = $("#firstTime-input").val().trim();
       frequency = $("#frequency-input").val().trim();
+
+      console.log(trainName);
+      console.log(destination);
+      console.log(firstTime);
+      console.log(frequency);
 
       //Push input to database
       database.ref().push({
@@ -36,22 +41,22 @@
         freqency: frequency
       });
 
-    // $("#trainName-input").val("");
-    // $("#destination-input").val("");
-    // $("#firstTime-input").val("");
-    // $("#frequency-input").val("");
+    $("#trainName-input").val("");
+    $("#destination-input").val("");
+    $("#firstTime-input").val("");
+    $("#frequency-input").val("");
 
-    // });
+    });
 
-    // Firebase watcher + initial loader HINT: .on("value")
-   //  database.ref().on("child_added", function(childSnapshot) {
+    //Firebase watcher + initial loader HINT: .on("value")
+    database.ref().on("child_added", function(childSnapshot) {
 
-   //    // Log everything that's coming out of snapshot
-   //    console.log(childSnapshot.val().trainName);
-   //    console.log(childSnapshot.val().destination);
-   //    console.log(childSnapshot.val().firstTime);
-   //    console.log(childSnapshot.val().frequency);
-   // });
+      // Log everything that's coming out of snapshot
+      console.log(childSnapshot.val().trainName);
+      console.log(childSnapshot.val().destination);
+      console.log(childSnapshot.val().firstTime);
+      console.log(childSnapshot.val().frequency);
+   });
 
       //
 //       $("#full-member-list").append("<div class='well'><span id='nameOfTrain'> " + childSnapshot.val().trainName +
