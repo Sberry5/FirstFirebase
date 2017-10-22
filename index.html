@@ -5,18 +5,15 @@
     <meta charset="UTF-8">
     <title>Train Tracker</title>
 
-    <!-- Bootstrap -->
+    <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
-    <!-- Moment.js-->
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <!--Moment.js-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
   </head>
-
 
 <body>
   <div class="container">
@@ -45,9 +42,11 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td id="nameOfTrain"></td>
+                              <td id="trainDestination"></td>
+                              <td id="trainFrequency"></td>
+                              <td id="nextArrival"></td>
+                              <td id="minAway"></td>
                             </tr>
                           </tbody>
                         </table>
@@ -56,7 +55,6 @@
     <div class="row">
       <div class="col-sm-12">
         <br>
-        <!-- First panel is for handling the search parameters -->
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title"><strong>Add Train</strong></h3>
@@ -102,7 +100,7 @@
     <div class="row">
       <div class="col-sm-12">
         <hr>
-        <h5 class="text-center"><small>Adapted By Shannon<i class="fa fa-heart"></i></small></h5>
+        <h5 class="text-center"><small>Created By Shannon</small></h5>
 
       </div>
     </div>

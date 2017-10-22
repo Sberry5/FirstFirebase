@@ -1,4 +1,4 @@
-  // Initialize Firebase
+  //Initialize Firebase
   var config = {
     apiKey: "AIzaSyAQz6fyaAEzl7H30JF12bk7VQKUHtZV5Ow",
     authDomain: "employeetracker-7a915.firebaseapp.com",
@@ -9,10 +9,10 @@
   };
   firebase.initializeApp(config);
 
-    // Create a variable to reference the database.
+    //Create a variable to reference the firebase database
     var database = firebase.database();
 
-    // Initial Values
+    //Initial Values
     var trainName = "";
     var destination = "";
     var firstTime = "";
@@ -36,31 +36,30 @@
         freqency: frequency
       });
 
-    $("#trainName-input").val("");
-    $("#destination-input").val("");
-    $("#firstTime-input").val("");
-    $("#frequency-input").val("");
+    // $("#trainName-input").val("");
+    // $("#destination-input").val("");
+    // $("#firstTime-input").val("");
+    // $("#frequency-input").val("");
 
-    });
+    // });
 
     // Firebase watcher + initial loader HINT: .on("value")
-    database.ref().on("child_added", function(childSnapshot) {
+   //  database.ref().on("child_added", function(childSnapshot) {
 
-      // Log everything that's coming out of snapshot
-  //   if(snapshot.val()){
-      console.log(childSnapshot.val().trainName);
-      console.log(childSnapshot.val().destination);
-      console.log(childSnapshot.val().firstTime);
-      console.log(childSnapshot.val().frequency);
-//   }
+   //    // Log everything that's coming out of snapshot
+   //    console.log(childSnapshot.val().trainName);
+   //    console.log(childSnapshot.val().destination);
+   //    console.log(childSnapshot.val().firstTime);
+   //    console.log(childSnapshot.val().frequency);
+   // });
 
-      // full list of items to the well
-      $("#full-member-list").append("<div class='well'><span id='name'> " + childSnapshot.val().name +
-        " </td><td id='email'> " + childSnapshot.val().email +
-        " </td><td id='age'> " + childSnapshot.val().age +
-        " </td><td id='comment'> " + childSnapshot.val().comment + " </span></div>");
+      //
+//       $("#full-member-list").append("<div class='well'><span id='nameOfTrain'> " + childSnapshot.val().trainName +
+//         " </td><td id='trainDestination'> " + childSnapshot.val().destination +
+//         " </td><td id='trainFrequency'> " + childSnapshot.val(). +
+// //        " </td><td id='nextArrival'> " + childSnapshot.val().comment + " </span></div>");
 
-      // Handle the errors
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    });
+//       //Address errors
+//     }, function(errorObject) {
+//       console.log("Errors handled: " + errorObject.code);
+//     });
