@@ -56,15 +56,12 @@
       console.log(childSnapshot.val().destination);
       console.log(childSnapshot.val().firstTime);
       console.log(childSnapshot.val().frequency);
+
+      //Store values in variables
+      var tblTrainName = childSnapshot.val().trainName;
+      var tblTrainDestination = childSnapshot.val().destination;
+      var tblTrainFrequency = childSnapshot.val().frequency;
+
+      $("#train-table > tbody").append("<tr><td>" + tblTrainName + "</td><td>" + tblTrainDestination + "</td><td>" + tblTrainFrequency);
+
    });
-
-      //
-//       $("#full-member-list").append("<div class='well'><span id='nameOfTrain'> " + childSnapshot.val().trainName +
-//         " </td><td id='trainDestination'> " + childSnapshot.val().destination +
-//         " </td><td id='trainFrequency'> " + childSnapshot.val(). +
-// //        " </td><td id='nextArrival'> " + childSnapshot.val().comment + " </span></div>");
-
-//       //Address errors
-//     }, function(errorObject) {
-//       console.log("Errors handled: " + errorObject.code);
-//     });
