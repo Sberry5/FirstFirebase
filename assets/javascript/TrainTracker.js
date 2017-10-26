@@ -40,7 +40,7 @@
         trainName: trainName,
         destination: destination,
   //      firstTime: firstTime,
- //       freqency: frequency
+        freqency: frequency
       });
 
     //Clears user input fields
@@ -52,22 +52,16 @@
     //
     database.ref().on("child_added", function(childSnapshot) {
 
-      // Log everything that's coming out of snapshot
-      // console.log(childSnapshot.val().trainName);
-      // console.log(childSnapshot.val().destination);
-      // console.log(childSnapshot.val().firstTrain);
-      // console.log(childSnapshot.val().frequency);
-
     //First train time converted
-      var firstTrainConverted = moment(firstTime, "hh:mm").subtract(1, "years");
-      console.log(firstTrainConverted);
+      var firstTrainTime = moment(firstTime, "hh:mm").subtract(1, "years");
+      console.log(firstTrainTime);
 
     //Current time to use as base point to calculate time
     var currentTime = moment();
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
     //Difference between the times
-    var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
+    var diffTime = moment().diff(moment(firstTrainTime), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime); 
 
     // Time apart (remainder)
@@ -75,23 +69,23 @@
     console.log(tRemainder);
 
     // Minute Until Train
-    var tMinutesTillTrain = frequency - tRemainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+    var waitUntilTrain = frequency - tRemainder;
+    console.log("MINUTES TILL TRAIN: " + waitUntilTrain);
 
-    // Next Train
-    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));   
+    //Next Train
+    var nextTrainArrival = moment().add(waitUntilTrain, "minutes");
+    console.log("ARRIVAL TIME: " + moment(nextTrainArrival).format("hh:mm"));   
 
-    //Store values in variables
+    // //Store values in variables
       var tblTrainName = childSnapshot.val().trainName;
       var tblTrainDestination = childSnapshot.val().destination;
-      var tblTrainFrequency = childSnapshot.val().frequency;
-      // var tblTrainArrival = 
-      // var tblTrainWait = 
+    //   var tblTrainFrequency = childSnapshot.val().frequency;
+    //   var tblTrainArrival = childSnapshot.val().nextTrainArrival;
+    //   var tblTrainWait = childSnapshot.val().waitUntilTrain;
 
       $("#train-table > tbody").append("<tr><td>" + tblTrainName + "</td><td>" + 
-        tblTrainDestination + "</td><td>" + tblTrainFrequency);
-        // + "</td><td>" + tblTrainArrival) + "</td><td>" + tblTrainWait;
+        tblTrainDestination + "</td><td>" + frequency
+         + "</td><td>" + moment(nextTrainArrival).format("hh:mm")  + "</td><td>" + waitUntilTrain);
 
    });
 
