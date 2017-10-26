@@ -16,33 +16,31 @@
     var trainName = "";
     var destination = "";
     var firstTime = "";
-    var frequency = "";
+    //var frequency
+    var frequency = parseInt();
 
     //On Submit button click run the following
     $("#add-train").on("click", function(event) {
       event.preventDefault();
       
-    //Take user input and trim the values
+    //Take user input, trim values, console.log values
       trainName = $("#trainName-input").val().trim();
-      destination = $("#destination-input").val().trim();
-      firstTime = $("#firstTime-input").val();
-      frequency = $("#frequency-input").val().trim();
-      //frequency = parseInt(frequency);
-
       console.log(trainName);
+      destination = $("#destination-input").val().trim();
       console.log(destination);
+      //firstTrain = moment(firstTime, "hh:mm").subtract(1, "years");
+      //cosole.log(firstTrain);
+      firstTime = $("#firstTime-input").val();
       console.log(firstTime);
+      frequency = $("#frequency-input").val().trim();
       console.log(frequency);
 
-
-      firstTtrain = moment(firstTime, "hh:mm").subtract(1, "years");
-      console.log(firstTrain);
       //Push input to database
       database.ref().push({
         trainName: trainName,
         destination: destination,
-//        firstTime: firstTime,
-//        freqency: frequency
+  //      firstTime: firstTime,
+ //       freqency: frequency
       });
 
     //Clears user input fields
@@ -51,13 +49,13 @@
     $("#firstTime-input").val("");
     $("#frequency-input").val("");
 
-    //Firebase watcher + initial loader HINT: .on("value")
+    //
     database.ref().on("child_added", function(childSnapshot) {
 
-      // // Log everything that's coming out of snapshot
+      // Log everything that's coming out of snapshot
       // console.log(childSnapshot.val().trainName);
       // console.log(childSnapshot.val().destination);
-      // console.log(childSnapshot.val().firstTime);
+      // console.log(childSnapshot.val().firstTrain);
       // console.log(childSnapshot.val().frequency);
 
     //First train time converted
@@ -68,12 +66,12 @@
     var currentTime = moment();
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
-    // Difference between the times
+    //Difference between the times
     var diffTime = moment().diff(moment(firstTime), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime); 
 
-        // Time apart (remainder)
-    var tRemainder = diffTime % Frequency;
+    // Time apart (remainder)
+    var tRemainder = diffTime % frequency;
     console.log(tRemainder);
 
     // Minute Until Train
@@ -93,5 +91,6 @@
 
    });
 
+});
 
-    });
+   // childSnapshot();
