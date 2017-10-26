@@ -1,3 +1,33 @@
+  // $(document).ready(function(){
+  //   var audio = document.createElement("audio");
+  //   audio.setAttribute("src", "../javascript/whereRWB.mp3");
+
+  // //Music control buttons
+  // $(".theme-button").on("click", function() {
+  //     audio.play();
+  //   });
+
+  // $(".pause-button").on("click", function() {
+  //     audio.pause();
+
+  //   audio.preload = "auto";
+      
+  //   });
+
+  // });
+
+// $(".my_audio").trigger('load');
+//   function play_audio(task) {
+//       if(task == 'play'){
+//            $(".my_audio").trigger('play');
+//       }
+//       if(task == 'stop'){
+//            $(".my_audio").trigger('pause');
+//            $(".my_audio").prop("currentTime",0);
+//       }
+//  };
+
+
   //Initialize Firebase
   var config = {
     apiKey: "AIzaSyDhnUigJgCZi4UaXz2dppTe6FAbzmVreGc",
@@ -64,15 +94,15 @@
     var diffTime = moment().diff(moment(firstTrainTime), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime); 
 
-    // Time apart (remainder)
+    //Time apart (remainder)
     var tRemainder = diffTime % frequency;
     console.log(tRemainder);
 
-    // Minute Until Train
+    //Time until next train
     var waitUntilTrain = frequency - tRemainder;
     console.log("MINUTES TILL TRAIN: " + waitUntilTrain);
 
-    //Next Train
+    //Next train arrival time
     var nextTrainArrival = moment().add(waitUntilTrain, "minutes");
     console.log("ARRIVAL TIME: " + moment(nextTrainArrival).format("hh:mm"));   
 
