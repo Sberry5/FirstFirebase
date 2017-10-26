@@ -25,14 +25,14 @@
       
     //Take user input, trim values, console.log values
       trainName = $("#trainName-input").val().trim();
-      console.log(trainName);
       destination = $("#destination-input").val().trim();
-      console.log(destination);
-      //firstTrain = moment(firstTime, "hh:mm").subtract(1, "years");
-      //cosole.log(firstTrain);
+      //firstTime = moment(firstTime, "hh:mm").subtract(1, "years");
+      //cosole.log(firstTime);
       firstTime = $("#firstTime-input").val();
-      console.log(firstTime);
       frequency = $("#frequency-input").val().trim();
+      console.log(trainName);
+      console.log(destination);
+      console.log(firstTime);
       console.log(frequency);
 
       //Push input to database
@@ -67,7 +67,7 @@
     console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
     //Difference between the times
-    var diffTime = moment().diff(moment(firstTime), "minutes");
+    var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
     console.log("DIFFERENCE IN TIME: " + diffTime); 
 
     // Time apart (remainder)
@@ -86,8 +86,12 @@
       var tblTrainName = childSnapshot.val().trainName;
       var tblTrainDestination = childSnapshot.val().destination;
       var tblTrainFrequency = childSnapshot.val().frequency;
+      // var tblTrainArrival = 
+      // var tblTrainWait = 
 
-      $("#train-table > tbody").append("<tr><td>" + tblTrainName + "</td><td>" + tblTrainDestination + "</td><td>" + tblTrainFrequency);
+      $("#train-table > tbody").append("<tr><td>" + tblTrainName + "</td><td>" + 
+        tblTrainDestination + "</td><td>" + tblTrainFrequency);
+        // + "</td><td>" + tblTrainArrival) + "</td><td>" + tblTrainWait;
 
    });
 
