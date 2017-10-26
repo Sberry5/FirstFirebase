@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
 
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 <body>
   <div class="container">
 
@@ -35,13 +38,7 @@
                             </tr>
                           </thead>
                           <tbody>
-<!--                             <tr>
-                              <td id="nameOfTrain"></td>
-                              <td id="trainDestination"></td>
-                              <td id="trainFrequency"></td>
-                              <td id="nextArrival"></td>
-                              <td id="minAway"></td>
-                            </tr> -->
+                          <!--Dynamically created table will appear here-->
                           </tbody>
                         </table>
       </div>
@@ -72,14 +69,14 @@
 
               <!--Form for 1st train time-->
               <div class="form-group">
-                <label for="start-time">First Train Time (HHmm - military time)</label>
-                <input type="number" class="form-setting" id="firstTime-input">
+                <label for="start-time">First Train Time (HH:mm - military time)</label>
+                <input class="form-setting" id="firstTime-input">
               </div>
 
               <!--Form for train frequency -->
               <div class="form-group">
                 <label>Frequency (min)</label>
-                <input type="number" class="form-setting" id="frequency-input">
+                <input type="numer" class="form-setting" id="frequency-input">
               </div>
 
               <!--Submit form button-->
