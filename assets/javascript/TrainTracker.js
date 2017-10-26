@@ -1,31 +1,13 @@
-  // $(document).ready(function(){
-  //   var audio = document.createElement("audio");
-  //   audio.setAttribute("src", "../javascript/whereRWB.mp3");
-
-  // //Music control buttons
-  // $(".theme-button").on("click", function() {
-  //     audio.play();
-  //   });
-
-  // $(".pause-button").on("click", function() {
-  //     audio.pause();
-
-  //   audio.preload = "auto";
-      
-  //   });
-
-  // });
-
-// $(".my_audio").trigger('load');
-//   function play_audio(task) {
-//       if(task == 'play'){
-//            $(".my_audio").trigger('play');
-//       }
-//       if(task == 'stop'){
-//            $(".my_audio").trigger('pause');
-//            $(".my_audio").prop("currentTime",0);
-//       }
-//  };
+$(".song").trigger('load');
+  function play_audio(task) {
+      if(task == 'play'){
+           $(".song").trigger('play');
+      }
+      if(task == 'stop'){
+           $(".song").trigger('pause');
+           $(".song").prop("currentTime",0);
+      }
+ };
 
 
   //Initialize Firebase
@@ -69,7 +51,7 @@
       database.ref().push({
         trainName: trainName,
         destination: destination,
-  //      firstTime: firstTime,
+        firstTime: firstTime,
         freqency: frequency
       });
 
@@ -83,8 +65,9 @@
     database.ref().on("child_added", function(childSnapshot) {
 
     //First train time converted
-      var firstTrainTime = moment(firstTime, "hh:mm").subtract(1, "years");
-      console.log(firstTrainTime);
+      var firstTrainTime = moment(childSnapshot.val().firstTime, "hh:mm").subtract(1, "years");
+      console.log("YOU ARE HERE:" + firstTrainTime);
+      console.log("NEXT HERE" + childSnapshot.val().firstTime);
 
     //Current time to use as base point to calculate time
     var currentTime = moment();
@@ -107,15 +90,17 @@
     console.log("ARRIVAL TIME: " + moment(nextTrainArrival).format("hh:mm"));   
 
     // //Store values in variables
-      var tblTrainName = childSnapshot.val().trainName;
-      var tblTrainDestination = childSnapshot.val().destination;
+     //   var tblTrainName = childSnapshot.val().trainName;
+     // var tblTrainDestination = childSnapshot.val().destination;
     //   var tblTrainFrequency = childSnapshot.val().frequency;
     //   var tblTrainArrival = childSnapshot.val().nextTrainArrival;
     //   var tblTrainWait = childSnapshot.val().waitUntilTrain;
 
-      $("#train-table > tbody").append("<tr><td>" + tblTrainName + "</td><td>" + 
-        tblTrainDestination + "</td><td>" + frequency
-         + "</td><td>" + moment(nextTrainArrival).format("hh:mm")  + "</td><td>" + waitUntilTrain);
+      $("#train-table > tbody").append("<tr><td>" + trainName 
+        + "</td><td>" + destination 
+        + "</td><td>" + frequency
+        + "</td><td>" + moment(nextTrainArrival).format("hh:mm")  
+        + "</td><td>" + waitUntilTrain);
 
    });
 
