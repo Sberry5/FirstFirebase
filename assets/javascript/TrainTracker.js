@@ -111,7 +111,7 @@ $(".song").trigger('load');
         trainName + "</td><td>" + 
         destination + "</td><td>" + 
         frequency + "</td><td>" + 
-        nextTrainArrival  + "</td><td>" + 
+        moment(nextTrainArrival).format("hh:mm") + "</td><td>" + 
         waitUntilTrain);
 
    });
